@@ -4,7 +4,7 @@ OurCAD，一款轻量级的Web-CAD引擎工具。开箱即用，支持CAD图纸�
 
 本仓库是OurCAD SDK的官方示例代码仓库。
 
-## 依赖安装
+### 依赖安装
 
 ```sh
 npm install
