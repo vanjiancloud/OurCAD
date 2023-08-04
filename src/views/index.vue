@@ -99,13 +99,13 @@ const positionToSelected = () => {
         ></layerTree>
     </div>
 
-    <div class="search-input">
+    <div class="search-input flex-space-between">
+        <i class="iconfont icon-sousuo"></i>
         <el-select
             v-model="search"
             filterable
             remote
-            reserve-keyword
-            placeholder="Please enter a keyword"
+            placeholder="请输入您想要搜索的内容"
             :remote-method="remoteMethod"
             :loading="loading"
             @change="positionToSelected"
@@ -165,7 +165,20 @@ const positionToSelected = () => {
 
 .search-input {
     position: absolute;
-    top: 60px;
-    right: 60px;
+    background-color: white;
+    top: 20px;
+    right: 20px;
+    width: 240px;
+    padding: 0 0 0 5px;
+    .icon-sousuo {
+        font-size: 22px;
+    }
+    ::v-deep .el-select {
+        width: 220px;
+    }
+    ::v-deep .el-select .el-input__wrapper {
+        border-radius: 0;
+        box-shadow: none !important;
+    }
 }
 </style>
