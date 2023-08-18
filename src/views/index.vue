@@ -4,8 +4,10 @@ import layerTree from './layer-tree/index.vue'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { Viewer, Controller } from 'ourcad'
+import { useRoute } from 'vue-router'
 // import { Viewer, Controller } from '../../esm'
 
+const route = useRoute()
 let isLoading = ref(true)
 let progress = ref(0)
 
@@ -14,7 +16,8 @@ let control: Controller
 onMounted(() => {
     const container = <HTMLElement>document.getElementById('container')
     // 加载线上
-    // const view = new Viewer(container, '20230713151640518')
+    // const fileName = route.query.file ? route.query.file as string : '20230713151640518'
+    // const view = new Viewer(container, fileName)
 
     // 加载本地模型
     const modelUrl = new URL('../assets/models/test.dxf', import.meta.url).href
