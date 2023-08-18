@@ -4,6 +4,7 @@ import layerTree from './layer-tree/index.vue'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { Viewer, Controller } from 'ourcad'
+// import { Viewer, Controller } from '../../esm'
 
 let isLoading = ref(true)
 let progress = ref(0)
@@ -13,11 +14,11 @@ let control: Controller
 onMounted(() => {
     const container = <HTMLElement>document.getElementById('container')
     // 加载线上
-    const view = new Viewer(container, '202306211559317483')
+    // const view = new Viewer(container, '20230713151640518')
 
     // 加载本地模型
-    // const modelUrl = new URL('../assets/models/test.dxf', import.meta.url).href
-    // const view = new Viewer(container, modelUrl)
+    const modelUrl = new URL('../assets/models/test.dxf', import.meta.url).href
+    const view = new Viewer(container, modelUrl)
 
     view.registFinishCallBack(() => {
         isLoading.value = false
@@ -99,7 +100,7 @@ const positionToSelected = () => {
         ></layerTree>
     </div>
 
-    <div class="search-input flex-space-between">
+    <!-- <div class="search-input flex-space-between">
         <i class="iconfont icon-sousuo"></i>
         <el-select
             v-model="search"
@@ -112,7 +113,7 @@ const positionToSelected = () => {
         >
             <el-option v-for="item in options" :key="item.index" :label="item.text" :value="item.index" />
         </el-select>
-    </div>
+    </div> -->
 </template>
 <style scoped lang="less">
 .cad-page {
