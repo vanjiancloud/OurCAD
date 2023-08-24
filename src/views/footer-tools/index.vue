@@ -14,7 +14,10 @@ const props = defineProps({
     }
 })
 
+// 是否全屏
 let isFullScreen = ref(false)
+// 是否显示批注
+let isShowComment = ref(true)
 const toolList = ref<toolType[]>([
     {
         title: '主视图',
@@ -81,10 +84,11 @@ const toolList = ref<toolType[]>([
     },
     {
         title: '显示/隐藏批注',
-        icon: 'icon-Hide',
+        icon: 'icon-eye',
         status: '',
         key: 'showOrHideComment',
         click: () => {
+            isShowComment.value = !isShowComment.value
             props.control.showOrHiddenComment()
         }
     },
@@ -156,6 +160,10 @@ defineExpose({
                     <i
                         v-if="item.key === 'fullScreen'"
                         :class="['iconfont', isFullScreen ? 'icon-quanping' : 'icon-fullscreen-expand']"
+                    ></i>
+                    <i
+                        v-else-if="item.key === 'showOrHideComment'"
+                        :class="['iconfont', isShowComment ? 'icon-eye' : 'icon-no_eye']"
                     ></i>
                     <i v-else :class="['iconfont', item.icon, item.status === 'using' ? 'usingIcon' : '']"></i>
                 </div>
