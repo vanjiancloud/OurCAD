@@ -4,8 +4,8 @@ import layerTree from './layer-tree/index.vue'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRoute } from 'vue-router'
-// import { Viewer, Controller } from 'ourcad'
-import { Viewer, Controller } from '../../esm'
+import { Viewer, Controller } from 'ourcad'
+// import { Viewer, Controller } from '../../esm'
 
 const route = useRoute()
 let isLoading = ref(true)
