@@ -3,9 +3,9 @@ import footerTools from './footer-tools/index.vue'
 import layerTree from './layer-tree/index.vue'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Viewer, Controller } from 'ourcad'
 import { useRoute } from 'vue-router'
-// import { Viewer, Controller } from '../../esm'
+// import { Viewer, Controller } from 'ourcad'
+import { Viewer, Controller } from '../../esm'
 
 const route = useRoute()
 let isLoading = ref(true)
@@ -16,12 +16,13 @@ let control: Controller
 onMounted(() => {
     const container = <HTMLElement>document.getElementById('container')
     // 加载线上
-    // const fileName = route.query.file ? route.query.file as string : '20230713151640518'
-    // const view = new Viewer(container, fileName)
+    const fileName = route.query.file ? route.query.file as string : '20230823093319218'
+    // const fileName = route.query.file ? route.query.file as string : '20230830181212375'
+    const view = new Viewer(container, fileName)
 
     // 加载本地模型
-    const modelUrl = new URL('../assets/models/test.dxf', import.meta.url).href
-    const view = new Viewer(container, modelUrl)
+    // const modelUrl = new URL('../assets/models/test.dxf', import.meta.url).href
+    // const view = new Viewer(container, modelUrl)
 
     view.registFinishCallBack(() => {
         isLoading.value = false
@@ -73,6 +74,13 @@ const remoteMethod = (query: string) => {
 const positionToSelected = () => {
     control.positionByText(search.value)
 }
+
+const focusPixel = () => {
+    const pixelId = control.getSelectedPixelId() as number
+    console.log('第80行被执行', pixelId)
+
+    control.focusByPixelId(5099)
+}
 </script>
 
 <template>
@@ -114,9 +122,16 @@ const positionToSelected = () => {
             :loading="loading"
             @change="positionToSelected"
         >
-            <el-option v-for="item in options" :key="item.index" :label="item.text" :value="item.index" />
+            <el-option v-for="item in options" :key="item.index" :label="item.text" :value="item.index">
+                <el-tooltip effect="dark" v-if="item.text.length > 20" :content="item.text" placement="left">
+                    <div>{{ item.text.substring(0, 20) + '...' }}</div>
+                </el-tooltip>
+                <div v-else> {{ item.text }} </div>
+            </el-option>
         </el-select>
     </div> -->
+
+    <!-- <el-button style="position: absolute; top: 20px; right: 20px;" @click="focusPixel">图元聚焦</el-button> -->
 </template>
 <style scoped lang="less">
 .cad-page {
@@ -172,13 +187,13 @@ const positionToSelected = () => {
     background-color: white;
     top: 20px;
     right: 20px;
-    width: 240px;
+    width: 300px;
     padding: 0 0 0 5px;
     .icon-sousuo {
         font-size: 22px;
     }
     ::v-deep .el-select {
-        width: 220px;
+        width: 300px;
     }
     ::v-deep .el-select .el-input__wrapper {
         border-radius: 0;

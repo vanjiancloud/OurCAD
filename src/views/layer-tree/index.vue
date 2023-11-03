@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Controller } from 'ourcad'
-// import { Controller } from '../../../esm'
+// import { Controller } from 'ourcad'
+import { Controller } from '../../../esm'
 
 const emit = defineEmits(['showOrHiddenLayerTree'])
 const props = defineProps({
@@ -23,6 +23,17 @@ const showOrHiddenGroup = (data: string, isSelected: boolean) => {
     }
 }
 
+let status = ref(false)
+const showOrHiddenAll = () => {
+    if (status.value) {
+        props.control.showAllLayer()
+        keys.value = Allkeys
+    } else {
+        props.control.hiddenAllLayer()
+        keys.value = []
+    }
+    status.value = !status.value
+}
 </script>
 
 <template>
