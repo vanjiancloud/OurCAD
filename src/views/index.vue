@@ -77,9 +77,9 @@ const positionToSelected = () => {
 
 const focusPixel = () => {
     const pixelId = control.getSelectedPixelId() as number
-    console.log('第80行被执行', pixelId)
+    console.log('图元ID', pixelId)
 
-    control.focusByPixelId(5099)
+    control.focusByPixelId(pixelId)
 }
 </script>
 
@@ -111,7 +111,7 @@ const focusPixel = () => {
         ></layerTree>
     </div>
 
-    <!-- <div class="search-input flex-space-between">
+    <div class="search-input flex-space-between">
         <i class="iconfont icon-sousuo"></i>
         <el-select
             v-model="search"
@@ -129,9 +129,9 @@ const focusPixel = () => {
                 <div v-else> {{ item.text }} </div>
             </el-option>
         </el-select>
-    </div> -->
+    </div>
 
-    <!-- <el-button style="position: absolute; top: 20px; right: 20px;" @click="focusPixel">图元聚焦</el-button> -->
+    <el-button style="position: absolute; top: 20px; right: 20px;" @click="focusPixel">图元聚焦</el-button>
 </template>
 <style scoped lang="less">
 .cad-page {
