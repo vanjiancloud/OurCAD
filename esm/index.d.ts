@@ -29,7 +29,6 @@ interface textObj {
     position: Vector3;
 }
 declare class Viewer {
-    private font;
     cadUrl: string;
     container: HTMLElement;
     renderer: THREE.WebGLRenderer;
@@ -126,17 +125,25 @@ declare class Controller {
      */
     positionByText(searchIndex: number): void;
     /**
-     * 添加标注：该方法只在使用ourbim上传并管理图纸时才有效
+     * 添加标注
      */
     addComment(type: string): void;
     /**
-     * 显示隐藏批注：该方法只在使用ourbim上传并管理图纸时才有效
+     * 显示隐藏批注
      */
     showOrHiddenComment(): void;
     /**
-     * 保存批注数据：该方法只在使用ourbim上传并管理图纸时才有效
+     * 保存批注数据：该方法只在使用OurBIM平台上传并管理图纸时才有效
      */
     saveComment(): void;
+    /**
+     * 获取当前选中的图元id
+     */
+    getSelectedPixelId(): number | null;
+    /**
+     * 根据图元id进行图纸focus
+     */
+    focusByPixelId(pixelId: number): void;
 }
 
 export { Controller, Viewer };
