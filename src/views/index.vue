@@ -77,8 +77,7 @@ const positionToSelected = () => {
 }
 
 const handleInputKey = (e: KeyboardEvent) => {
-    console.log('键盘输入', e)
-    if (e.keyCode === 70) {
+    if (e.keyCode === 70) { // 设置F键为图元focus快捷键
         focusPixel()
     }
 }
