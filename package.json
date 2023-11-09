@@ -23,7 +23,7 @@
   "dependencies": {
     "element-plus": "^2.3.8",
     "less": "^4.1.3",
-    "ourcad": "^1.0.7",
+    "ourcad": "^1.0.8",
     "pinia": "^2.1.3",
     "vue": "^3.3.4",
     "vue-router": "^4.2.2"

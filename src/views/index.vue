@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import footerTools from './footer-tools/index.vue'
 import layerTree from './layer-tree/index.vue'
+import updateComment from './update-comment/index.vue'
 import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRoute } from 'vue-router'
-import { Viewer, Controller } from 'ourcad'
-// import { Viewer, Controller } from '../../esm'
+// import { Viewer, Controller } from 'ourcad'
+import { Viewer, Controller } from '../../esm'
 
 const route = useRoute()
 let isLoading = ref(true)
@@ -81,6 +82,21 @@ const focusPixel = () => {
 
     control.focusByPixelId(pixelId)
 }
+
+const showCommentUpdateCom = ref(false)
+const commentMessage = ref()
+const getSelectedCommentMessage = async() => {
+    await control.getSelectedCommentMessage().then((data: any) => {
+        if (data.commentSelectedStatus) {
+            showCommentUpdateCom.value = true
+            commentMessage.value = data
+        } else {
+            showCommentUpdateCom.value = false
+            commentMessage.value = null
+        }
+    })
+}
+
 </script>
 
 <template>
@@ -95,7 +111,7 @@ const focusPixel = () => {
         </div>
     </div>
     <div class="cad-page" id="CAD-Page">
-        <div id="container" :class="['cad-page', showPointer ? 'pointer' : '']">
+        <div id="container" @click="getSelectedCommentMessage" :class="['cad-page', showPointer ? 'pointer' : '']">
             <footerTools
                 ref="tool"
                 :control="control"
@@ -109,6 +125,12 @@ const focusPixel = () => {
             :control="control"
             @showOrHiddenLayerTree="showOrHiddenLayerTree"
         ></layerTree>
+
+        <updateComment
+            v-if="showCommentUpdateCom"
+            :commentMessage="commentMessage"
+            :control="control"
+        ></updateComment>
     </div>
 
     <div class="search-input flex-space-between">

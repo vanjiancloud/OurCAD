@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11372693",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e8b6",
+      "unicode_decimal": 59574
+    },
+    {
       "icon_id": "403628",
       "name": "保存",
       "font_class": "baocun1",
@@ -305,13 +312,6 @@
       "font_class": "cuowuguanbiquxiao-fangkuang",
       "unicode": "e8e8",
       "unicode_decimal": 59624
-    },
-    {
-      "icon_id": "1603643",
-      "name": "box",
-      "font_class": "box",
-      "unicode": "e61d",
-      "unicode_decimal": 58909
     },
     {
       "icon_id": "1727414",

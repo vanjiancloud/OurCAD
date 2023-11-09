@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { toolType } from '@/types/footerTool'
-import { Controller } from 'ourcad'
-// import { Controller } from '../../../esm'
+// import { Controller } from 'ourcad'
+import { Controller } from '../../../esm'
 import { ElMessage } from 'element-plus'
 
 const emit = defineEmits(['showOrHiddenMaterialTree', 'showOrHiddenLayerTree'])
@@ -79,7 +79,11 @@ const toolList = ref<toolType[]>([
         status: '',
         key: 'comment',
         click: (type: string) => {
-            props.control.addComment(type)
+            props.control.addComment({
+                type: type,
+                color: '#cf8062', // 设置默认的批注颜色和线宽
+                linewidth: 1
+            })
         }
     },
     {

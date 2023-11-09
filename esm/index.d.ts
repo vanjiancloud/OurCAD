@@ -56,6 +56,19 @@ declare class Viewer {
     update(): void;
 }
 
+interface drawParams {
+    type: string;
+    linewidth?: number;
+    color?: string;
+}
+interface editDrawParams {
+    type: string;
+    linewidth?: number;
+    color?: string;
+    id: string;
+    text?: string;
+}
+
 interface searchItem {
     index: number;
     text: string;
@@ -127,7 +140,7 @@ declare class Controller {
     /**
      * 添加标注
      */
-    addComment(type: string): void;
+    addComment(drawParams: drawParams): void;
     /**
      * 显示隐藏批注
      */
@@ -144,6 +157,22 @@ declare class Controller {
      * 根据图元id进行图纸focus
      */
     focusByPixelId(pixelId: number): void;
+    /**
+     * 获取选取批注信息
+     */
+    getSelectedCommentMessage(): Promise<unknown>;
+    /**
+     * 修改批注信息
+     */
+    updateComment(editDrawParams: editDrawParams): any;
+    /**
+     * 通过批注id删除批注
+     */
+    deleteCommentById(id: string): void;
+    /**
+     * 删除所有批注
+     */
+    deleteAllComment(): void;
 }
 
 export { Controller, Viewer };
