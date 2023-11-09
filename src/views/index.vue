@@ -76,6 +76,15 @@ const positionToSelected = () => {
     control.positionByText(search.value)
 }
 
+const handleInputKey = (e: KeyboardEvent) => {
+    console.log('键盘输入', e)
+    if (e.keyCode === 70) {
+        focusPixel()
+    }
+}
+window.addEventListener('keydown', handleInputKey)
+
+
 const focusPixel = () => {
     const pixelId = control.getSelectedPixelId() as number
     console.log('图元ID', pixelId)

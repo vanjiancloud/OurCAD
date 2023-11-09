@@ -87,6 +87,15 @@ const toolList = ref<toolType[]>([
         }
     },
     {
+        title: '保存批注',
+        icon: 'icon-baocun1',
+        status: '',
+        key: 'saveComment',
+        click: () => {
+            props.control.saveComment()
+        }
+    },
+    {
         title: '显示/隐藏批注',
         icon: 'icon-eye',
         status: '',
@@ -94,15 +103,6 @@ const toolList = ref<toolType[]>([
         click: () => {
             isShowComment.value = !isShowComment.value
             props.control.showOrHiddenComment()
-        }
-    },
-    {
-        title: '保存批注',
-        icon: 'icon-baocun1',
-        status: '',
-        key: 'saveComment',
-        click: () => {
-            props.control.saveComment()
         }
     },
     {
