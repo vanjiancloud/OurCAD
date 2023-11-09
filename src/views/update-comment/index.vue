@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, defineProps, watch } from 'vue'
-// import { Controller } from 'ourcad'
-import { Controller } from '../../../esm'
+import { Controller } from 'ourcad'
+// import { Controller } from '../../../esm'
 import { ElMessageBox, ElMessage } from 'element-plus'
 
 const props = defineProps({
