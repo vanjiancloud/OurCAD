@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { toolType } from '@/types/footerTool'
-import { Controller } from 'ourcad'
-// import { Controller } from '../../../esm'
+// import { Controller } from 'ourcad'
+import { Controller } from '../../../esm'
 import { ElMessage } from 'element-plus'
 
 const emit = defineEmits(['showOrHiddenMaterialTree', 'showOrHiddenLayerTree'])
