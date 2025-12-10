@@ -210,7 +210,7 @@ defineExpose({
     padding: 8px;
 
     .iconfont {
-      font-size: 24px;
+      font-size: 30px;
     }
   }
 
@@ -218,7 +218,7 @@ defineExpose({
     padding: 6px;
 
     .iconfont {
-      font-size: 20px;
+      font-size: 26px;
     }
   }
 
@@ -226,7 +226,7 @@ defineExpose({
     padding: 5px;
 
     .iconfont {
-      font-size: 18px;
+      font-size: 24px;
     }
   }
 
